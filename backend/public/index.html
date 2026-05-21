@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar de Productividad</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dashboard {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 { color: #4CAF50; margin-bottom: 5px; }
+        p { color: #aaaaaa; margin-bottom: 30px; }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #45a049; }
+        .consejo-caja {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2a2a2a;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+            font-style: italic;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h1>📡 Guardián del Escritorio</h1>
+        <p>Monitoreo de presencia en tiempo real</p>
+
+        <button onclick="pedirConsejo()">Pedir consejo a Gemini</button>
+
+        <div class="consejo-caja" id="texto-consejo">
+            Presiona el botón para analizar tus tiempos de trabajo...
+        </div>
+    </div>
+
+    <script>
+        // Esta función hace el GET a tu propia API cuando das clic
+        async function pedirConsejo() {
+            const caja = document.getElementById('texto-consejo');
+            caja.innerText = "Pensando... 🤔";
+            
+            try {
+                const respuesta = await fetch('/api/consejo');
+                const datos = await respuesta.json();
+                
+                if (datos.consejo) {
+                    caja.innerText = `"${datos.consejo}"`;
+                } else {
+                    caja.innerText = "Hubo un problema procesando el consejo.";
+                }
+            } catch (error) {
+                console.error("Error al pedir consejo:", error);
+                caja.innerText = "No se pudo conectar con el servidor.";
+            }
+        }
+    </script>
+
+</body>
+</html>
