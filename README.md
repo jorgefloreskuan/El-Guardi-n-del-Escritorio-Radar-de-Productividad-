@@ -1,71 +1,57 @@
-# 📡 Guardián del Escritorio (Radar de Productividad IoT)
 
-Un sistema de monitoreo IoT que utiliza un sensor ultrasónico y un microcontrolador ESP32 para detectar tu presencia en el escritorio. El sistema registra tus tiempos de trabajo en la nube y utiliza Inteligencia Artificial (Gemini) para darte consejos personalizados de productividad y descansos.
 
-## 🚀 Características
 
-- **Monitoreo en Tiempo Real:** Detección de presencia física mediante sensor ultrasónico HC-SR04.
-- **Hardware WiFi:** Envío de datos de forma inalámbrica a través de un ESP32.
-- **Backend Robusto:** API RESTful construida con Node.js y Express.
-- **Base de Datos en la Nube:** Almacenamiento seguro del historial de sesiones en MongoDB Atlas.
-- **Integración con IA:** Análisis de datos y generación de consejos automáticos usando el modelo `gemini-2.5-flash` de Google.
-- **Dashboard Integrado:** Interfaz web minimalista (Modo Oscuro) servida directamente desde el backend para un despliegue sencillo.
+# 📡 Radar de Productividad - Sistema IoT & Backend
+
+Un sistema inteligente del Internet de las Cosas (IoT) diseñado para monitorear el tiempo de actividad en un escritorio. Utiliza un sensor ultrasónico simulado para medir la presencia, almacena las lecturas en la nube y aprovecha la inteligencia artificial para brindar consejos de productividad en tiempo real.
+
+## 🚀 Características Principales
+* **Monitoreo en Tiempo Real:** Detección de distancia mediante un ESP32 y un sensor ultrasónico (HC-SR04).
+* **Almacenamiento Persistente:** Base de datos NoSQL en la nube para guardar el historial de sesiones.
+* **Asistente de IA:** Integración con la API de Google Gemini para analizar los tiempos de escritorio y generar recomendaciones personalizadas.
+* **Arquitectura Escalable:** Backend estructurado para recibir flujos de datos continuos sin cuellos de botella.
 
 ## 🛠️ Tecnologías Utilizadas
+* **Backend:** Node.js, Express.
+* **Base de Datos:** MongoDB Atlas, Mongoose (Modelado de datos).
+* **Inteligencia Artificial:** Google Generative AI (Gemini 2.5 Flash).
+* **Hardware / Simulación:** C++, Microcontrolador ESP32, Wokwi.
+* **Despliegue (Cloud):** Render.
 
-- **IoT / Electrónica:** C++, ESP32, Sensor HC-SR04
-- **Backend:** Node.js, Express, Mongoose
-- **Base de Datos:** MongoDB Atlas
-- **Inteligencia Artificial:** Google Gemini API
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
+## 🔌 Documentación de la API (Endpoints)
 
-## 📂 Estructura del Proyecto
+El servidor central expone las siguientes rutas para la interacción con el hardware y el cliente web:
 
-```text
-radar_de_productividad/
-├── backend/
-│   ├── models/
-│   │   └── Sesion.js       # Esquema de Mongoose para los datos
-│   ├── public/
-│   │   └── index.html      # Dashboard web (Frontend)
-│   ├── .env                # Variables de entorno (No se sube al repo)
-│   ├── package.json        # Dependencias de Node
-│   └── server.js           # Lógica principal del servidor y API
-└── hardware/
-    └── esp32_radar.ino     # Código C++ para el microcontrolador
-```
+### 1. Registro de Presencia
+Atrapa los datos enviados por el microcontrolador y los almacena en la base de datos.
+* **Ruta:** `POST /api/presencia`
+* **Cuerpo de la petición (JSON):**
+  ```json
+  {
+    "distancia": 45,
+    "estado": "trabajando"
+  }
 
-## ⚙️ Configuración e Instalación
 
-### 1. Variables de Entorno
-Crea un archivo `.env` en la carpeta `backend` con la siguiente estructura:
+* **Respuesta Exitosa:** `201 Created`
 
-```env
-PORT=3000
-MONGO_URI=mongodb+srv://<usuario>:<password>@cluster...
-GEMINI_API_KEY=tu_llave_de_google_aqui
-```
+### 2. Consejero de Productividad
 
-### 2. Levantar el Servidor Local
-Navega a la carpeta del backend, instala las dependencias y corre el servidor:
+Consulta los últimos 5 registros de la base de datos y genera un consejo rápido y directo usando IA.
 
-```bash
-cd backend
-npm install
-node server.js
-```
-El dashboard estará disponible en `http://localhost:3000`.
+* **Ruta:** `GET /api/consejo`
+* **Respuesta Exitosa:** `200 OK` (Devuelve un objeto JSON con la recomendación generada por Gemini).
 
-### 3. Configuración del ESP32
-1. Abre el archivo `.ino` en Arduino IDE.
-2. Modifica las credenciales de tu red WiFi (`ssid` y `password`).
-3. Modifica la variable `serverName` con la dirección IPv4 local de tu computadora.
-4. Conexiones físicas:
-   - `VCC` -> 5V / VIN
-   - `GND` -> GND
-   - `TRIG` -> Pin 5
-   - `ECHO` -> Pin 18
+## ⚙️ Estructura del Proyecto
 
-## 👥 Autor
+* `/backend`: Contiene la lógica del servidor Node.js, la configuración de Express, la conexión a Mongoose y la integración con la IA.
+* `/backend/models`: Define el esquema de datos para las sesiones (Sesion.js).
+* `/hardware/esp32_radar`: Código fuente en C++ (`esp32_radar.ino`) listo para ser cargado en el ESP32 o simulado en Wokwi.
+
+## 👥 Autores
+
+Proyecto desarrollado y mantenido por:
 
 * **Flores Kuan Jorge Alejandro**
+
+```
