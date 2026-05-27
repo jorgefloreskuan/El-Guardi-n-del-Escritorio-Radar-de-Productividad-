@@ -1,0 +1,13 @@
+# 🛑 VARIABLES DE ENTORNO Y SECRETOS (¡Prohibido subir a GitHub!)
+.env
+*.env
+.env.*
+
+# 📦 DEPENDENCIAS DE NODE.JS (Render las instala solo, no ocupas subirlas)
+node_modules/
+backend/node_modules/
+
+# 💻 ARCHIVOS BASURA DEL SISTEMA OPERATIVO Y LOGS
+.DS_Store
+Thumbs.db
+npm-debug.log*
