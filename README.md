@@ -34,30 +34,29 @@ Atrapa los datos enviados por el microcontrolador y los almacena en la base de d
     "estado": "trabajando"
   }
 
-```
 
-* **Respuesta Exitosa:** `201 Created`
+* Respuesta Exitosa: `201 Created`
 
 ### 2. Consejero de Productividad
 
 Consulta los últimos 5 registros de la base de datos y genera un consejo rápido y directo usando IA.
 
-* **Ruta:** `GET /api/consejo`
-* **Respuesta Exitosa:** `200 OK` (Devuelve un objeto JSON con la recomendación generada por Gemini).
+* Ruta: `GET /api/consejo`
+* Respuesta Exitosa: `200 OK` (Devuelve un objeto JSON con la recomendación generada por Gemini).
 
 ## ⚙️ Estructura del Proyecto
 
-* `/backend`: Contiene la lógica del servidor Node.js, la configuración de Express, la conexión a Mongoose y la integración con la IA.
-* `/backend/models`: Define el esquema de datos para las sesiones (Sesion.js).
-* `/hardware/esp32_radar`: Código fuente en C++ (`esp32_radar.ino`) listo para ser cargado en el ESP32 o simulado en Wokwi.
+* `/backend` : Contiene la lógica del servidor Node.js, la configuración de Express, la conexión a Mongoose y la integración con la IA.
+* `/backend/models` : Define el esquema de datos para las sesiones (Sesion.js).
+* `/hardware/esp32_radar` : Código fuente en C++ ( `esp32_radar.ino` ) listo para ser cargado en el ESP32 o simulado en Wokwi.
 
-## 👥 Autores
+## 👥 Autor
 
 Proyecto desarrollado y mantenido por:
 
-* **Flores Kuan Jorge Alejandro**
+* Flores Kuan Jorge Alejandro
 
 
-```
 
-```
+
+
