@@ -1,4 +1,4 @@
-﻿# 📡 Guardián del Escritorio (Radar de Productividad IoT)
+# 📡 Guardián del Escritorio (Radar de Productividad IoT)
 
 Un sistema de monitoreo IoT que utiliza un sensor ultrasónico y un microcontrolador ESP32 para detectar tu presencia en el escritorio. El sistema registra tus tiempos de trabajo en la nube y utiliza Inteligencia Artificial (Gemini) para darte consejos personalizados de productividad y descansos.
 
@@ -21,7 +21,7 @@ Un sistema de monitoreo IoT que utiliza un sensor ultrasónico y un microcontrol
 
 ## 📂 Estructura del Proyecto
 
-\`\`\`text
+```text
 radar_de_productividad/
 ├── backend/
 │   ├── models/
@@ -33,27 +33,27 @@ radar_de_productividad/
 │   └── server.js           # Lógica principal del servidor y API
 └── hardware/
     └── esp32_radar.ino     # Código C++ para el microcontrolador
-\`\`\`
+```
 
 ## ⚙️ Configuración e Instalación
 
 ### 1. Variables de Entorno
 Crea un archivo `.env` en la carpeta `backend` con la siguiente estructura:
 
-\`\`\`env
+```env
 PORT=3000
 MONGO_URI=mongodb+srv://<usuario>:<password>@cluster...
 GEMINI_API_KEY=tu_llave_de_google_aqui
-\`\`\`
+```
 
 ### 2. Levantar el Servidor Local
 Navega a la carpeta del backend, instala las dependencias y corre el servidor:
 
-\`\`\`bash
+```bash
 cd backend
 npm install
 node server.js
-\`\`\`
+```
 El dashboard estará disponible en `http://localhost:3000`.
 
 ### 3. Configuración del ESP32
