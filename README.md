@@ -1,9 +1,11 @@
 
-
-
 # 📡 Radar de Productividad - Sistema IoT & Backend
 
 Un sistema inteligente del Internet de las Cosas (IoT) diseñado para monitorear el tiempo de actividad en un escritorio. Utiliza un sensor ultrasónico simulado para medir la presencia, almacena las lecturas en la nube y aprovecha la inteligencia artificial para brindar consejos de productividad en tiempo real.
+
+## 🌐 Enlaces en Vivo
+* **Servidor / API (Render):** https://radar-productividad-api.onrender.com
+* **Simulador IoT (Wokwi):** https://wokwi.com/projects/465209505151923201
 
 ## 🚀 Características Principales
 * **Monitoreo en Tiempo Real:** Detección de distancia mediante un ESP32 y un sensor ultrasónico (HC-SR04).
@@ -32,6 +34,7 @@ Atrapa los datos enviados por el microcontrolador y los almacena en la base de d
     "estado": "trabajando"
   }
 
+```
 
 * **Respuesta Exitosa:** `201 Created`
 
@@ -53,5 +56,8 @@ Consulta los últimos 5 registros de la base de datos y genera un consejo rápid
 Proyecto desarrollado y mantenido por:
 
 * **Flores Kuan Jorge Alejandro**
+
+
+```
 
 ```
